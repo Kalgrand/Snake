@@ -5,6 +5,10 @@ window.onload = function () {
     const snakeW = 20;
     const snakeH = 20;
 
-    ctx.fillStyle = "#FFDEAD";
-    ctx.fillRect(20,20,snakeW,snakeH);
+    function draw(x,y) {
+        ctx.fillStyle = "#FFDEAD";
+        ctx.fillRect(x*snakeW,y*snakeH,snakeW,snakeH);
+    }
+
+    draw(10,10);
 }
