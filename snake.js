@@ -5,6 +5,6 @@ window.onload = function () {
     const snakeW = 20;
     const snakeH = 20;
 
-    ctx.fillStyle = "#000";
+    ctx.fillStyle = "#FFDEAD";
     ctx.fillRect(20,20,snakeW,snakeH);
 };
