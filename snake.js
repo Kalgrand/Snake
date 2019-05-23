@@ -7,4 +7,4 @@ window.onload = function () {
 
     ctx.fillStyle = "#FFDEAD";
     ctx.fillRect(20,20,snakeW,snakeH);
-};
+}
