@@ -5,7 +5,7 @@ window.onload = function () {
     const snakeW = 20;
     const snakeH = 20;
 
-    //var score = 0;
+    var score = 0;
     var control = "RIGHT";
 
     document.addEventListener("keydown",direction);
@@ -22,6 +22,12 @@ window.onload = function () {
         }
     }
 
+    function Score(x) {
+        ctx.fillStyle = "black";
+        ctx.font = '15px serif';
+        ctx.fillText("SCORE : " + x, 5 , cvs.height - 10 );
+    }
+    
     function Snake(x, y) {
         ctx.fillStyle = "#FFDEAD";
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
@@ -43,7 +49,7 @@ window.onload = function () {
         x : Math.round(Math.random()*(1+6+5)),
         y : Math.round(Math.random()*(5+8+4))
     }
-
+    
     function Food(x,y) {
         ctx.fillStyle = "red";
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
@@ -73,7 +79,7 @@ window.onload = function () {
         if (control == "DOWN") snakeY++;
 
         if(snakeX == food.x && snakeY == food.y){
-            // score++;
+            score++;
             food = {
                 x : Math.round(Math.random()*(1+6+5)),
                 y : Math.round(Math.random()*(5+8+4))
@@ -88,7 +94,7 @@ window.onload = function () {
         }
 
         snake.unshift(newHead);
-
+        Score(score);
     }
     setInterval(Draw,60);
 }
