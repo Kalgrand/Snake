@@ -39,8 +39,18 @@ window.onload = function () {
             }
         );
     }
-    function Draw() {
 
+    var food = {
+        x : Math.round(Math.random()*(1+6+5)),
+        y : Math.round(Math.random()*(5+8+4))
+    }
+
+    function Food(x,y) {
+        ctx.fillStyle = "red";
+        ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
+    }
+
+    function Draw() {
         ctx.clearRect(0,0, cvs.width, cvs.height);
 
         for (var j = 0; j < snake.length; j++) {
@@ -48,6 +58,8 @@ window.onload = function () {
             var y = snake[j].y;
             Snake(x, y);
         }
+
+        Food(food.x,food.y);
 
         var snakeX = snake[0].x;
         var snakeY = snake[0].y;
