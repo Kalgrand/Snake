@@ -31,25 +31,28 @@ window.onload = function () {
     var length = 2;
     var snake = [];
 
+    for (var i = length - 1; i >= 0; i--) {
+        snake.push(
+            {
+                x: i,
+                y: 0
+            }
+        );
+    }
     function Draw() {
 
-        for (var i = length - 1; i >= 0; i--) {
-            snake.push(
-                {
-                    x: i,
-                    y: 0
-                }
-            );
-        }
+        ctx.clearRect(0,0, cvs.width, cvs.height);
+
         for (var j = 0; j < snake.length; j++) {
             var x = snake[j].x;
             var y = snake[j].y;
             Snake(x, y);
         }
 
-
         var snakeX = snake[0].x;
         var snakeY = snake[0].y;
+
+        snake.pop();
 
         if (control == "LEFT") snakeX--;
         if (control == "UP") snakeY--;
