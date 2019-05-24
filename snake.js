@@ -11,13 +11,13 @@ window.onload = function () {
     document.addEventListener("keydown",direction);
 
     function direction(event){
-        if(event.keyCode == 37){
+        if(event.keyCode == 37 || event.keyCode == 65){
             control = "LEFT";
-        }else if(event.keyCode == 38){
+        }else if(event.keyCode == 38 || event.keyCode == 87){
             control = "UP";
-        }else if(event.keyCode == 39){
+        }else if(event.keyCode == 39 || event.keyCode == 68){
             control = "RIGHT";
-        }else if(event.keyCode == 40){
+        }else if(event.keyCode == 40 || event.keyCode == 83){
             control = "DOWN";
         }
     }
