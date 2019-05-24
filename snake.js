@@ -5,7 +5,7 @@ window.onload = function () {
     const snakeW = 20;
     const snakeH = 20;
 
-   // var score = 0;
+    //var score = 0;
     var control = "RIGHT";
 
     document.addEventListener("keydown",direction);
@@ -21,7 +21,6 @@ window.onload = function () {
             control = "DOWN";
         }
     }
-
 
     function Snake(x, y) {
         ctx.fillStyle = "#FFDEAD";
@@ -68,12 +67,20 @@ window.onload = function () {
             location.reload();
         }
 
-        snake.pop();
-
         if (control == "LEFT") snakeX--;
         if (control == "UP") snakeY--;
         if (control == "RIGHT") snakeX++;
         if (control == "DOWN") snakeY++;
+
+        if(snakeX == food.x && snakeY == food.y){
+            // score++;
+            food = {
+                x : Math.round(Math.random()*(1+6+5)),
+                y : Math.round(Math.random()*(5+8+4))
+            }
+        }else{
+            snake.pop();
+        }
 
         var newHead = {
             x: snakeX,
