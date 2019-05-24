@@ -11,13 +11,13 @@ window.onload = function () {
     document.addEventListener("keydown",direction);
 
     function direction(event){
-        if(event.keyCode == 37 || event.keyCode == 65){
+        if((event.keyCode == 37 || event.keyCode == 65) && control != "RIGHT"){
             control = "LEFT";
-        }else if(event.keyCode == 38 || event.keyCode == 87){
+        }else if((event.keyCode == 38 || event.keyCode == 87) && control != "DOWN"){
             control = "UP";
-        }else if(event.keyCode == 39 || event.keyCode == 68){
+        }else if((event.keyCode == 39 || event.keyCode == 68) && control != "LEFT"){
             control = "RIGHT";
-        }else if(event.keyCode == 40 || event.keyCode == 83){
+        }else if((event.keyCode == 40 || event.keyCode == 83) && control != "UP"){
             control = "DOWN";
         }
     }
@@ -29,7 +29,12 @@ window.onload = function () {
     }
     
     function Snake(x, y) {
-        ctx.fillStyle = "#FFDEAD";
+        //ctx.fillStyle = "#FFDEAD";
+        var my_gradient = ctx.createLinearGradient(0, 100, 100, 0);
+        my_gradient.addColorStop(0.5, "Khaki");
+        my_gradient.addColorStop(1, "Gold");
+        my_gradient.addColorStop(0.5, "DarkOrange");
+        ctx.fillStyle = my_gradient;
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
     }
 
