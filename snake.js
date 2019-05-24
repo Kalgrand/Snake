@@ -30,10 +30,10 @@ window.onload = function () {
     
     function Snake(x, y) {
         //ctx.fillStyle = "#FFDEAD";
-        var my_gradient = ctx.createLinearGradient(0, 100, 100, 0);
-        my_gradient.addColorStop(0.5, "Khaki");
-        my_gradient.addColorStop(1, "Gold");
+        var my_gradient = ctx.createLinearGradient(0, 250, 0, 200);
+        my_gradient.addColorStop(1, "Khaki");
         my_gradient.addColorStop(0.5, "DarkOrange");
+        my_gradient.addColorStop(1, "SandyBrown");
         ctx.fillStyle = my_gradient;
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
     }
