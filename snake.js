@@ -1,5 +1,4 @@
 window.onload = function () {
-    //var PF = require('pathfinding');
     const cvs = document.getElementById("snake");
     const ctx = cvs.getContext("2d");
 
@@ -7,7 +6,6 @@ window.onload = function () {
     const snakeH = 20;
 
     var gameStarted = false;
-    //var grid = new PF.Grid(cvs.weight, cvs.height);
 
     var score = 0;
     var control = "RIGHT";
