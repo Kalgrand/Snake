@@ -9,13 +9,6 @@ window.onload = function () {
     var score = 0;
     var control = "RIGHT";
 
-    // for web
-    //var easystar = new EasyStar.js();
-    // for node.js
-   //var easystarjs = require('easystarjs');
-    //var easystar = new easystarjs.js();
-    //var grid = [];
-
     document.addEventListener("keydown",direction);
 
     function direction(event){
