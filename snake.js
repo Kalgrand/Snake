@@ -6,8 +6,15 @@ window.onload = function () {
     const snakeW = 20;
     const snakeH = 20;
 
-    //var score = 0;
+    var score = 0;
     var control = "RIGHT";
+
+    // for web
+    //var easystar = new EasyStar.js();
+    // for node.js
+   //var easystarjs = require('easystarjs');
+    //var easystar = new easystarjs.js();
+    //var grid = [];
 
     document.addEventListener("keydown",direction);
 
@@ -23,28 +30,23 @@ window.onload = function () {
         }
     }
 
-    function gamerun() {
-        init();
-    }
-
     this.onkeypress = function(e) {
         if (gameStarted == false && e.keyCode == 32) {
             gameStarted = true;
-            gamerun();
         }
     }
 
-   // function Score(x) {
-   //     ctx.fillStyle = "black";
-   //     ctx.font = '15px serif';
-   //     ctx.fillText("SCORE : " + x, 5 , cvs.height - 10 );
-   // }
+     function Score(x) {
+         ctx.fillStyle = "black";
+         ctx.font = '15px serif';
+         ctx.fillText("SCORE : " + x, 5 , cvs.height - 10 );
+     }
 
-    function Start(x) {
-             ctx.fillStyle = "black";
-             ctx.font = '45px serif';
-             ctx.fillText("Press Spacebar ", 180 , 310 );
-         }
+    function Start() {
+        ctx.fillStyle = "black";
+        ctx.font = '45px serif';
+        ctx.fillText("Press Spacebar ", 180 , 310 );
+    }
 
     function Snake(x, y) {
         //ctx.fillStyle = "#FFDEAD";
@@ -170,7 +172,7 @@ window.onload = function () {
             if (control == "DOWN") snakeY++;
 
             if (snakeX == food.x && snakeY == food.y) {
-                //score++;
+                score++;
                 food = {
                     x: Math.round(Math.random() * (1 + 6 + 5)),
                     y: Math.round(Math.random() * (5 + 8 + 4))
@@ -183,7 +185,6 @@ window.onload = function () {
                 || snakeX == stone4.x && snakeY == stone4.y || snakeX == stone5.x && snakeY == stone5.y || snakeX == stone6.x && snakeY == stone6.y
                 || snakeX == stone7.x && snakeY == stone7.y || snakeX == stone8.x && snakeY == stone8.y || snakeX == stone9.x && snakeY == stone9.y
                 || snakeX == stone10.x && snakeY == stone10.y) {
-                //score++;
                 stone = {
                     x: Math.round(Math.random() * (Math.PI * 8)),
                     y: Math.round(Math.random() * (Math.PI * 8))
@@ -197,7 +198,7 @@ window.onload = function () {
             }
 
             snake.unshift(newHead);
-            //Score(score);
+            Score(score);
         }
     }
     setInterval(Draw,60);
