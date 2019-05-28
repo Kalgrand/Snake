@@ -1,10 +1,13 @@
 window.onload = function () {
-    var gameStarted = false;
+    //var PF = require('pathfinding');
     const cvs = document.getElementById("snake");
     const ctx = cvs.getContext("2d");
 
     const snakeW = 20;
     const snakeH = 20;
+
+    var gameStarted = false;
+    //var grid = new PF.Grid(cvs.weight, cvs.height);
 
     var score = 0;
     var control = "RIGHT";
@@ -29,11 +32,11 @@ window.onload = function () {
         }
     }
 
-     function Score(x) {
-         ctx.fillStyle = "black";
-         ctx.font = '15px serif';
-         ctx.fillText("SCORE : " + x, 5 , cvs.height - 10 );
-     }
+    function Score(x) {
+        ctx.fillStyle = "black";
+        ctx.font = '15px serif';
+        ctx.fillText("SCORE : " + x, 5 , cvs.height - 10 );
+    }
 
     function Start() {
         ctx.fillStyle = "black";
@@ -42,7 +45,6 @@ window.onload = function () {
     }
 
     function Snake(x, y) {
-        //ctx.fillStyle = "#FFDEAD";
         var my_gradient = ctx.createLinearGradient(0,0, 310,310);
         my_gradient.addColorStop(1, "Khaki");
         my_gradient.addColorStop(0.5, "DarkOrange");
