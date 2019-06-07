@@ -195,3 +195,14 @@ AStar.prototype.containsNode = function(nodes, node) {
 AStar.prototype.nodeEquals = function(node1, node2) {
     return node1.x === node2.x && node1.y === node2.y;
 }
+
+/**
+ * Liczy przewidywana przez heurystyke droga od danego punktu do punktu docelowego
+ *
+ * @param {Object} from - pole 1
+ * @param {Object} to - pole 2
+ * @returns {number}
+ */
+AStar.prototype.heuristic = function(from, to) {
+    return Math.abs(from.x - to.y) + Math.abs(from.y - to.y);
+}
