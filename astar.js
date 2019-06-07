@@ -167,3 +167,20 @@ AStar.prototype.getNeighbours = function(node) {
 
     return neighbours;
 }
+
+/**
+ * Sprawdza czy w danej tablicy wystepuje pole o danych wspolrzednych
+ *
+ * @param {Object[]} nodes - tablica z polami do sprawdzenia
+ * @param {Object} node - pole, ktore sprawdzamy
+ * @returns {boolean}
+ */
+AStar.prototype.containsNode = function(nodes, node) {
+    for (var i = 0; i < nodes.length; i++) {
+        if(nodes[i].x === node.x && nodes[i].y === node.y) {
+            return true;
+        }
+    }
+
+    return false;
+}
