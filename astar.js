@@ -137,3 +137,33 @@ AStar.prototype.getPathFromNode = function(node) {
     // odwracamy tablice zeby sciezka byla od punktu startowanego do koncowego
     return path.reverse();
 }
+
+/**
+ * Zwraca tablice sasiadow danego pola
+ *
+ * @param {Object} node - pole, dla ktorego pobieramy sasiadow
+ * @returns {Object[]} tablica sasiadow danego pola
+ */
+AStar.prototype.getNeighbours = function(node) {
+    var neighbours = [];
+    var x = node.x;
+    var y = node.y;
+
+    if (x - 1 >= 0) {
+        neighbours.push(this.map[x-1][y]);
+    }
+
+    if (x + 1 < this.mapWidth) {
+        neighbours.push(this.map[x+1][y]);
+    }
+
+    if (y - 1 >= 0) {
+        neighbours.push(this.map[x][y-1]);
+    }
+
+    if (y + 1 < this.mapHeight) {
+        neighbours.push(this.map[x][y+1]);
+    }
+
+    return neighbours;
+}
