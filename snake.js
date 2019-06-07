@@ -127,10 +127,51 @@ window.onload = function () {
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
     }
 
+    function RadomXY(forbiddenCells) {
+        var newPos;
+        do {
+            newPos = {
+                x: Math.round(Math.random() * (1 + 6 + 5)),
+                y: Math.round(Math.random() * (5 + 8 + 4))
+            };
+        } while(containsCell(forbiddenCells, newPos));
+
+        return newPos;
+    }
+
+    function containsCell(cells, cell) {
+        for (var i = 0; i < cells.length; i++) {
+            if(cells[i].x === cell.x && cells[i].y === cell.y) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     Start();
 
     function Draw() {
         if (gameStarted) {
+
+            if (path.length === 0) {
+                var astar = new AStar(Math.round(Math.PI * 8) + 1, Math.round(Math.PI * 8) + 1, [
+                    stone,
+                    stone2,
+                    stone3,
+                    stone4,
+                    stone5,
+                    stone6,
+                    stone7,
+                    stone8,
+                    stone9,
+                    stone10,
+                ], snake);
+
+                path = astar.getClosestPath(snake[0], food);
+            }
+
+
             ctx.clearRect(0, 0, cvs.width, cvs.height);
 
             for (var j = 0; j < snake.length; j++) {
@@ -163,12 +204,13 @@ window.onload = function () {
             if (control == "RIGHT") snakeX++;
             if (control == "DOWN") snakeY++;
 
+            var newPos = path.shift();
+            snakeX = newPos.x;
+            snakeY = newPos.y;
+
             if (snakeX == food.x && snakeY == food.y) {
                 score++;
-                food = {
-                    x: Math.round(Math.random() * (1 + 6 + 5)),
-                    y: Math.round(Math.random() * (5 + 8 + 4))
-                }
+                food = RadomXY(snake.concat([stone, stone2, stone3, stone4, stone5, stone6, stone7, stone8, stone9, stone10]));
             } else {
                 snake.pop();
             }
