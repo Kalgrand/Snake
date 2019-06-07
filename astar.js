@@ -184,3 +184,14 @@ AStar.prototype.containsNode = function(nodes, node) {
 
     return false;
 }
+
+/**
+ * Sprawdza dwa pola maja takie same wspolrzedne
+ *
+ * @param {Object} node1 - pole 1
+ * @param {Object} node2 - pole2
+ * @returns {boolean}
+ */
+AStar.prototype.nodeEquals = function(node1, node2) {
+    return node1.x === node2.x && node1.y === node2.y;
+}
