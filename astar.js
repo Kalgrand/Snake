@@ -100,3 +100,20 @@ AStar.prototype.getClosestPath = function(from, to) {
     // zwracamy pusta tablice jezeli nie znaleziono sciezki
     return [];
 }
+
+/**
+ * Zwraca indeks elementu o najniszym koszcie
+ *
+ * @param {Object[]} nodes - tablica pol mapy gry
+ * @returns {number} indeks elementu o najniszym koszcie
+ */
+AStar.prototype.getLowestCostNodeIndex = function(nodes) {
+    var index = -1;
+    for (var i = 0; i < nodes.length; i++) {
+        if (index == -1 || nodes[i].f < nodes[index].f) {
+            index = i;
+        }
+    }
+
+    return index;
+}
