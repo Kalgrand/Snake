@@ -117,3 +117,23 @@ AStar.prototype.getLowestCostNodeIndex = function(nodes) {
 
     return index;
 }
+
+/**
+ * Zwraca sciezke od punktu startowego do koncowego
+ *
+ * @param {Object} node - punkt startowy
+ * @returns {Object[]} sciezka od punktu startowego do koncowego
+ */
+AStar.prototype.getPathFromNode = function(node) {
+    var path = [];
+    var currentNode = node;
+
+    // dopoki dany punkt ma "rodzica" podazamy za nim
+    while (currentNode.parent !== undefined) {
+        path.push({x: currentNode.x, y: currentNode.y});
+        currentNode = currentNode.parent;
+    }
+
+    // odwracamy tablice zeby sciezka byla od punktu startowanego do koncowego
+    return path.reverse();
+}
