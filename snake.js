@@ -7,21 +7,21 @@ window.onload = function () {
     var gameStarted = false;
     var path = [];
     var score = 0;
-    var control = "RIGHT";
+    // var control = "RIGHT";
 
-    document.addEventListener("keydown",direction);
-
-    function direction(event){
-        if((event.keyCode == 37 || event.keyCode == 65) && control != "RIGHT"){
-            control = "LEFT";
-        }else if((event.keyCode == 38 || event.keyCode == 87) && control != "DOWN"){
-            control = "UP";
-        }else if((event.keyCode == 39 || event.keyCode == 68) && control != "LEFT"){
-            control = "RIGHT";
-        }else if((event.keyCode == 40 || event.keyCode == 83) && control != "UP"){
-            control = "DOWN";
-        }
-    }
+    // document.addEventListener("keydown",direction);
+    //
+    // function direction(event){
+    //     if((event.keyCode == 37 || event.keyCode == 65) && control != "RIGHT"){
+    //         control = "LEFT";
+    //     }else if((event.keyCode == 38 || event.keyCode == 87) && control != "DOWN"){
+    //         control = "UP";
+    //     }else if((event.keyCode == 39 || event.keyCode == 68) && control != "LEFT"){
+    //         control = "RIGHT";
+    //     }else if((event.keyCode == 40 || event.keyCode == 83) && control != "UP"){
+    //         control = "DOWN";
+    //     }
+    // }
 
     this.onkeypress = function(e) {
         if (gameStarted == false && e.keyCode == 32) {
@@ -48,6 +48,7 @@ window.onload = function () {
         my_gradient.addColorStop(1, "SandyBrown");
         ctx.fillStyle = my_gradient;
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
+        ctx.strokeRect(x * snakeW, y * snakeH, snakeW, snakeH);
     }
 
     var length = 2;
@@ -63,8 +64,8 @@ window.onload = function () {
     }
 
     var food = {
-        x: Math.round(Math.random() * (1 + 6 + 5)),
-        y: Math.round(Math.random() * (5 + 8 + 4))
+        x: Math.round(Math.random() * (Math.PI * 8)),
+        y: Math.round(Math.random() * (Math.PI * 8))
     }
 
     var stone = {
@@ -120,19 +121,21 @@ window.onload = function () {
     function Food(x,y) {
         ctx.fillStyle = "red";
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
+        ctx.strokeRect(x * snakeW, y * snakeH, snakeW, snakeH);
     }
 
     function Stone(x,y) {
         ctx.fillStyle = "silver";
         ctx.fillRect(x * snakeW, y * snakeH, snakeW, snakeH);
+        ctx.strokeRect(x * snakeW, y * snakeH, snakeW, snakeH);
     }
 
     function RadomXY(forbiddenCells) {
         var newPos;
         do {
             newPos = {
-                x: Math.round(Math.random() * (1 + 6 + 5)),
-                y: Math.round(Math.random() * (5 + 8 + 4))
+                x: Math.round(Math.random() * (Math.PI * 8)),
+                y: Math.round(Math.random() * (Math.PI * 8))
             };
         } while(containsCell(forbiddenCells, newPos));
 
@@ -199,10 +202,10 @@ window.onload = function () {
                 location.reload();
             }
 
-            if (control == "LEFT") snakeX--;
-            if (control == "UP") snakeY--;
-            if (control == "RIGHT") snakeX++;
-            if (control == "DOWN") snakeY++;
+            // if (control == "LEFT") snakeX--;
+            // if (control == "UP") snakeY--;
+            // if (control == "RIGHT") snakeX++;
+            // if (control == "DOWN") snakeY++;
 
             var newPos = path.shift();
             snakeX = newPos.x;
