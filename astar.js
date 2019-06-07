@@ -206,3 +206,16 @@ AStar.prototype.nodeEquals = function(node1, node2) {
 AStar.prototype.heuristic = function(from, to) {
     return Math.abs(from.x - to.y) + Math.abs(from.y - to.y);
 }
+
+/**
+ * Aktualizuje parametry danego pola
+ *
+ * @param {Object} neighbour - pole sasiadujace
+ * @param {Object} currentNode - aktualnie przetwarzane pole
+ * @param {Object} gScore - koszt przejscia
+ */
+AStar.prototype.updateNeighbour = function (neighbour, currentNode, gScore) {
+    neighbour.parent = currentNode;
+    neighbour.g = gScore;
+    neighbour.f = neighbour.g + neighbour.h;
+}
