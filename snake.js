@@ -1,12 +1,11 @@
 window.onload = function () {
     const cvs = document.getElementById("snake");
     const ctx = cvs.getContext("2d");
-
     const snakeW = 20;
     const snakeH = 20;
 
     var gameStarted = false;
-
+    var path = [];
     var score = 0;
     var control = "RIGHT";
 
@@ -64,8 +63,8 @@ window.onload = function () {
     }
 
     var food = {
-        x : Math.round(Math.random()*(1+6+5)),
-        y : Math.round(Math.random()*(5+8+4))
+        x: Math.round(Math.random() * (1 + 6 + 5)),
+        y: Math.round(Math.random() * (5 + 8 + 4))
     }
 
     var stone = {
@@ -182,7 +181,7 @@ window.onload = function () {
                     x: Math.round(Math.random() * (Math.PI * 8)),
                     y: Math.round(Math.random() * (Math.PI * 8))
                 }
-                location.reload();
+               location.reload();
             }
 
             var newHead = {
